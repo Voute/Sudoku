@@ -1,23 +1,26 @@
 package com.example.ytokmakov.sudoku;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "Sudoku started";
+    private static final String TAG = "Sudoku";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((View)findViewById(R.id.button_about)).setOnClickListener(this);
-
+        findViewById(R.id.button_about).setOnClickListener(this);
+        findViewById(R.id.button_newgame).setOnClickListener(this);
     }
 
     @Override
@@ -67,7 +70,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void openNewGameDialog()
     {
 
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.new_game_title)
+                .setItems(R.array.difficulty,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startGame(which);
+                            }
+                        })
+                .show();
+    }
 
-
+    private void startGame(int i)
+    {
+        Log.d(TAG, "clicked on " + i);
     }
 }
