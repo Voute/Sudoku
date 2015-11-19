@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openNewGameDialog();
                 break;
             }
+            case R.id.button_exit:
+            {
+                finish();
+                break;
+            }
         }
 
     }
@@ -84,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startGame(int i)
     {
+
         Log.d(TAG, "clicked on " + i);
+        Intent intent = new Intent(this, DrawActivity.class);
+        startActivity(intent);
     }
 }
