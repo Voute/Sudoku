@@ -5,6 +5,12 @@
         android:id="@+id/settings"
         android:title="@string/settings_title"
         android:alphabeticShortcut="@string/settings_shortcut"
-        ></item>
+        />
+
+    <item
+        android:id="@+id/draw_example"
+        android:title="@string/draw_example_title"
+        android:alphabeticShortcut="d"
+        />
 
 </menu>

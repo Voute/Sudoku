@@ -24,6 +24,7 @@ public class DrawActivity extends Activity {
         public GraphicsView(Context context)
         {
             super(context);
+            setBackgroundResource(R.drawable.background);
         }
 
         @Override

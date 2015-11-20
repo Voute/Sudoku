@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
 
         findViewById(R.id.button_about).setOnClickListener(this);
         findViewById(R.id.button_newgame).setOnClickListener(this);
@@ -39,9 +40,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.settings) {
-            startActivity(new Intent(this, PreferencesActivity.class));
-            return true;
+        switch (id)
+        {
+            case R.id.settings:
+            {
+                startActivity(new Intent(this, PreferencesActivity.class));
+                return true;
+            }
+            case R.id.draw_example:
+            {
+                Intent intent = new Intent(this, DrawActivity.class);
+                startActivity(intent);
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -89,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startGame(int i)
     {
-
         Log.d(TAG, "clicked on " + i);
-        Intent intent = new Intent(this, DrawActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GameActivity.KEY_DIFFICULTY, i);
         startActivity(intent);
     }
 }
